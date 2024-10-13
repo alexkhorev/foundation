@@ -1,6 +1,6 @@
 import streamlit as st
 from openpyxl import load_workbook
-from extractors import extract_data_from_sheet
+from core.extractor.extractor import extract_data_from_sheet
 
 st.title(
     'Calculation of a capped pile'

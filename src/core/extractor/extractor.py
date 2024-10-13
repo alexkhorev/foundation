@@ -2,13 +2,13 @@ from typing import Union
 
 from openpyxl.worksheet.worksheet import Worksheet
 
-from data_extractor import (
+from .data_extractor import (
     DataExtractor,
     PileDataExtractor,
     FoundationDataExtractor,
     LoadDataExtractor
 )
-from src.shared.models import PileData, FoundationData, LoadData
+from ..shared.models import PileData, FoundationData, LoadData
 
 
 class ExtractorFactory:

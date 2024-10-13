@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 from openpyxl.worksheet.worksheet import Worksheet
 
-from src.shared.models import (
+from ..shared.models import (
     PileData,
     SoilLayer,
     FoundationData,

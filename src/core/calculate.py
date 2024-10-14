@@ -63,7 +63,7 @@ class MainCalculation(PileCalculationStrategy):
 
         sum_moment_with_coefficient = 0.9 * sum_moment / 1.1
 
-        is_passed = sum_moment_with_coefficient < load_data.first_limit_state.M
+        is_passed = load_data.first_limit_state.M < sum_moment_with_coefficient
 
         # TODO: Add M, N, Q
         return {

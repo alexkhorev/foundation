@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from math import pi, tan, radians, sqrt
 from typing import List, Tuple, Dict
 
-from shared.models import PileData, LoadData, FoundationData, SoilLayer
+from .shared.models import PileData, LoadData, FoundationData, SoilLayer
 
 
 class PileCalculationStrategy(ABC):
@@ -187,8 +187,6 @@ def _calculate_side_cap_moment(
 def _calculate_soil_repulsion(soil_layer: SoilLayer) -> float:
     """
     Calculate the soil repulsion.
-    Args:
-        soil_layer: soil layer with all parameters
     """
     return pi * soil_layer.cohesion * tan(radians(45 + soil_layer.friction_angle / 2)) ** 3
 
@@ -196,8 +194,6 @@ def _calculate_soil_repulsion(soil_layer: SoilLayer) -> float:
 def _get_soil_repulsions(foundation_data: FoundationData) -> List[Tuple[float, float]]:
     """
     Calculate soil repulsion for every geological element from foundation data
-    Args:
-        foundation_data:
 
     Returns:
         List[float]: list of soil repulsion with depth layer
@@ -212,8 +208,6 @@ def _get_soil_repulsions(foundation_data: FoundationData) -> List[Tuple[float, f
 def _calculate_weighted_avg(vars_with_weight: List[Tuple[float, float]]) -> float:
     """
     Calculate average soil repulsion by depth layer
-    Args:
-        vars_with_weight:
     """
     sum_depth = sum([x[1] for x in vars_with_weight])
     soil_repulsion = sum([x * y for x, y in vars_with_weight])

@@ -1,4 +1,3 @@
-# TODO: Create tests for all calculation functions
 from abc import ABC, abstractmethod
 from math import pi, tan, radians, sqrt
 from typing import List, Tuple, Dict
@@ -65,9 +64,10 @@ class MainCalculation(PileCalculationStrategy):
 
         is_passed = load_data.first_limit_state.M < sum_moment_with_coefficient
 
-        # TODO: Add M, N, Q
         return {
             "calculation_variables": {
+                "first_state_load": [*load_data.first_limit_state],
+                "second_state_load": [*load_data.second_limit_state],
                 "soil_repulsion": soil_repulsion,
                 "def_module": def_module,
                 "betta": betta,
@@ -205,6 +205,7 @@ def _get_soil_repulsions(foundation_data: FoundationData) -> List[Tuple[float, f
         soil_repulsion = _calculate_soil_repulsion(soil_layer)
         soil_repulsions.append((soil_repulsion, soil_layer.depth))
     return soil_repulsions
+
 
 # TODO: Create function for defining compressible depth or fix formula
 def _calculate_weighted_avg(vars_with_weight: List[Tuple[float, float]]) -> float:
